@@ -1,6 +1,7 @@
 /* exported Blocked, Filters, Prefs */
 /* globals chrome, newTabTools, Grid, Updater */
 var Prefs = {
+	_toolbarIcon: 'images/tools-light.svg',
 	_theme: 'light',
 	_opacity: 80,
 	_rows: 3,
@@ -18,6 +19,7 @@ var Prefs = {
 
 	init: function() {
 		let names = [
+			'toolbarIcon',
 			'theme',
 			'opacity',
 			'rows',
@@ -29,8 +31,7 @@ var Prefs = {
 			'history',
 			'recent',
 			'thumbnailSize',
-			'version',
-			'versionLastAck'
+			'version'
 		];
 
 		for (let n of names) {
@@ -51,6 +52,13 @@ var Prefs = {
 		});
 	},
 	parsePrefs: function(prefs) {
+		if ('toolbarIcon' in prefs && typeof prefs.toolbarIcon == 'string') {
+			this._toolbarIcon = prefs.toolbarIcon;
+
+			if (!('newTabTools' in window)) {
+				chrome.browserAction.setIcon({path: prefs.toolbarIcon});
+			}
+		}
 		if (['light', 'dark'].includes(prefs.theme)) {
 			this._theme = prefs.theme;
 		}
@@ -128,13 +136,19 @@ var Prefs = {
 			}
 		}
 	},
+	get versionLastAck() {
+		return this._versionLastAck;
+	},
+	set versionLastAck(value) {
+		chrome.storage.local.set({ versionLastAck: value.toJSON() });
+	},
 	get versionLastUpdate() {
 		return this._versionLastUpdate;
 	},
 	set versionLastUpdate(value) {
 		// Make sure this is up to date for synchronous code.
 		this._versionLastUpdate = value;
-		chrome.storage.local.set({ versionLastUpdate: value });
+		chrome.storage.local.set({ versionLastUpdate: value.toJSON() });
 	}
 };
 

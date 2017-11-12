@@ -1,4 +1,13 @@
 {
+	"action_captureThumbnail": {
+		"message": "サムネイルをキャプチャ"
+	},
+	"action_isPinned": {
+		"message": "新しいタブページにピン留めしました"
+	},
+	"action_pin": {
+		"message": "新しいタブページにピン留めする"
+	},
 	"bg_header": {
 		"message": "新しいタブページの背景画像:"
 	},
@@ -15,10 +24,10 @@
 		"message": "タイルを編集"
 	},
 	"contextmenu_pin": {
-		"message": "タイルをピン止め"
+		"message": "タイルをピン留め"
 	},
 	"contextmenu_unpin": {
-		"message": "タイルのピン止めを外す"
+		"message": "タイルのピン留めを外す"
 	},
 	"contextmenu_block": {
 		"message": "タイルを削除"
@@ -27,7 +36,7 @@
 		"message": "New Tab Tools 設定"
 	},
 	"database_error_cookies": {
-		"message": "cookies が無効になっている場合は、$URL$ を例外に追加してください。"
+		"message": "cookies が無効になっている場合は、$1 を例外に追加してください。"
 	},
 	"database_error_history_settings": {
 		"message": "Firefox が\"履歴を記憶させない\"または\"常にプライベートブラウジングモードで開く\"に設定されている場合、New Tab Tools は起動できません。"
@@ -176,6 +185,9 @@
 	},
 	"tile_savedthumb_label": {
 		"message": "保存した画像:"
+	},
+	"tile_savedthumb_savecurrent": {
+		"message": "現在のサムネイルを保存"
 	},
 	"tile_savedthumb_set": {
 		"message": "設定"
